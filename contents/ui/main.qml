@@ -357,14 +357,14 @@ PlasmoidItem {
             }
             ColumnLayout {
                 id: fin
-                Layout.minimumWidth: !mes.height > daysofsem.width ? daysofsem.width : mes.width
-                Layout.minimumHeight: (mes.height+dia.height)*.7
+                Layout.minimumWidth: !monthText.height > daysofsem.width ? daysofsem.width : monthText.width
+                Layout.minimumHeight: (monthText.height+daysText.height)*.7
                 Layout.preferredWidth: Layout.minimumWidth
                 Layout.preferredHeight: Layout.minimumHeight
                 anchors.horizontalCenter: parent.horizontalCenter
 
                     Kirigami.Heading {
-                      id: dia
+                      id: daysText
                       anchors.top: parent.top
                       anchors.topMargin: -fSize*.9
                       anchors.horizontalCenter: parent.horizontalCenter
@@ -375,7 +375,7 @@ PlasmoidItem {
                       font.bold: true
                     }
                 Kirigami.Heading {
-                      id: mes
+                      id: monthText
                       anchors.bottom: parent.bottom
                       anchors.horizontalCenter: parent.horizontalCenter
                       text: Texts.getMonthText(codelang, (Qt.formatDateTime(new Date(), "M") - 1))
@@ -389,8 +389,8 @@ PlasmoidItem {
                     repeat: true
                     running: true
                     onTriggered: {
-                        mes.text = Texts.getMonthText(codelang, Qt.formatDateTime(new Date(), "M"))
-                        dia.text = Qt.formatDateTime(new Date(), "dd")
+                        monthText.text = Texts.getMonthText(codelang, Qt.formatDateTime(new Date(), "M") - 1)
+                        daysText.text = Qt.formatDateTime(new Date(), "dd")
                     }
                 }
             }
