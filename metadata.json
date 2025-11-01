@@ -1,0 +1,24 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "",
+                "Name": "ptrendx"
+            }
+        ],
+        "Name": "FancyClock",
+        "Id": "com.ptrendx.clock",
+        "Description": "Plasmoid showing current date and clock",
+        "Category": "Utilities",
+        "Icon": "clock",
+        "EnabledByDefault": true,
+        "License": "GPL-3.0+",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "0.1",
+        "Website": ""
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
