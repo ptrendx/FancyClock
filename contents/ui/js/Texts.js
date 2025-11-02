@@ -27,7 +27,6 @@ function getDayWeekText(language, dayIndex) {
 
     };
 
-    // Si el idioma está en el objeto, devuelve el día correspondiente; si no, devuelve en inglés por defecto.
     return daysOfWeek[language] ? daysOfWeek[language][dayIndex] : daysOfWeek["en"][dayIndex];
 }
 
@@ -58,6 +57,5 @@ function getMonthText(language, monthIndex) {
         sq: ["Janar", "Shkurt", "Mars", "Prill", "Maj", "Qershor", "Korrik", "Gusht", "Shtator", "Tetor", "Nëntor", "Dhjetor"]
     };
 
-    // Si el idioma está en el objeto, devuelve el mes correspondiente; si no, devuelve en inglés por defecto.
     return months[language] ? months[language][monthIndex] : months["en"][monthIndex];
 }
