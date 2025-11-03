@@ -62,7 +62,6 @@ PlasmoidItem {
   FontLoader {
     id: quicksand
     source: "../fonts/Quicksand-VariableFont_wght.ttf"
-    // source: "../fonts/Libertinus_Mono/LibertinusMono-Regular.ttf"
   }
 
   function abbreviate(text, maxLength) {
@@ -196,12 +195,18 @@ PlasmoidItem {
           Layout.fillWidth: true
         }
 
-        Kirigami.Heading{
-          id: hours
-          color: textColor
-          font.pixelSize: fSize * 4
-          text: Qt.formatDateTime(root.currentDate, "h")
-          font.family: quicksand.name
+        Rectangle {
+          color: "transparent"
+          width: fSize * 4
+          height: hours.height
+          Kirigami.Heading{
+            id: hours
+            color: textColor
+            font.pixelSize: fSize * 4
+            text: Qt.formatDateTime(root.currentDate, "h")
+            font.family: quicksand.name
+            anchors.horizontalCenter: parent.horizontalCenter
+          }
         }
 
         Rectangle {
@@ -217,12 +222,18 @@ PlasmoidItem {
           }
         }
 
-        Kirigami.Heading{
-          id: minutesText
-          color: textColor
-          font.pixelSize: fSize * 4
-          text: Qt.formatDateTime(root.currentDate, "mm")
-          font.family: quicksand.name
+        Rectangle {
+          color: "transparent"
+          width: fSize * 4
+          height: minutesText.height
+          Kirigami.Heading{
+            id: minutesText
+            color: textColor
+            font.pixelSize: fSize * 4
+            text: Qt.formatDateTime(root.currentDate, "mm")
+            font.family: quicksand.name
+            anchors.horizontalCenter: parent.horizontalCenter
+          }
         }
 
         Item {
