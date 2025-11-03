@@ -62,6 +62,7 @@ PlasmoidItem {
   FontLoader {
     id: quicksand
     source: "../fonts/Quicksand-VariableFont_wght.ttf"
+    // source: "../fonts/Libertinus_Mono/LibertinusMono-Regular.ttf"
   }
 
   function abbreviate(text, maxLength) {
@@ -72,7 +73,7 @@ PlasmoidItem {
     }
   }
 
-  function dayText(b) {
+  function getDayText(b) {
     return Texts.getDayWeekText(codelang, b)
   }
 
@@ -110,12 +111,12 @@ PlasmoidItem {
       Layout.minimumWidth: root.Layout.minimumWidth
       Layout.minimumHeight: root.Layout.minimumHeight
       Layout.preferredWidth: daysRow.width
-      Layout.preferredHeight: cal.height + daysRow. height + clock.height
+      Layout.preferredHeight: cal_rect.height + daysRow.height + clock.height
       spacing: 0
       Row {
         id: daysRow
         width: fSize*13
-        height: daysBubbleRepeater.itemAt(0).dayText.height
+        height: daySize
         spacing: daySize / 2
         Layout.alignment: Qt.AlignHCenter
         Repeater {
@@ -142,7 +143,7 @@ PlasmoidItem {
                 id: dayText
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                text: dayText(getDayFromIndex(index)).substring(0, numLettersInDay)
+                text: getDayText(getDayFromIndex(index)).substring(0, numLettersInDay)
                 color: textColor
                 font.pixelSize: fSize
                 font.capitalization: Font.Capitalize
@@ -153,19 +154,17 @@ PlasmoidItem {
         }
       }
 
-      ColumnLayout {
-        id: cal
-        Layout.minimumWidth: !monthText.height > daysRow.width ? daysRow.width : monthText.width
-        Layout.minimumHeight: (monthText.height+daysText.height)*.7
-        Layout.preferredWidth: Layout.minimumWidth
-        Layout.preferredHeight: Layout.minimumHeight
+      Rectangle {
+        id: cal_rect
+        Layout.fillWidth: true
+        height: (monthText.height+daysText.height)*.7
+        color: "transparent"
         Layout.alignment: Qt.AlignHCenter
-
         Kirigami.Heading {
           id: daysText
-          anchors.top: parent.top
           anchors.topMargin: -fSize*.9
           anchors.horizontalCenter: parent.horizontalCenter
+          anchors.top: parent.top
           text: Qt.formatDateTime(root.currentDate, "dd")
           font.pixelSize: fSize * 3
           font.family: oswald.name
@@ -174,8 +173,8 @@ PlasmoidItem {
         }
         Kirigami.Heading {
           id: monthText
-          anchors.bottom: parent.bottom
           anchors.horizontalCenter: parent.horizontalCenter
+          anchors.bottom: parent.bottom
           text: Texts.getMonthText(codelang, (Qt.formatDateTime(root.currentDate, "M") - 1))
           font.pixelSize: fSize * 4
           font.family: england.name
@@ -183,6 +182,7 @@ PlasmoidItem {
           font.capitalization: Font.Capitalize
         }
       }
+
       RowLayout {
         id: clock
         Layout.minimumWidth: hours.width*2.4
