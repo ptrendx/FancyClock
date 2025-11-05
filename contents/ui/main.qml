@@ -18,7 +18,9 @@ PlasmoidItem {
   property int firstday: plasmoid.configuration.dayInitial
   property bool latinAlphabet: Plasmoid.configuration.latinAlphabet
   property int numLettersInDay: 1
-  property var textColor: Kirigami.Theme.textColor
+  property var customTextColor: Plasmoid.configuration.textColor
+  property var useThemeTextColor: Plasmoid.configuration.textColorFromTheme
+  property var textColor: useThemeTextColor ? Kirigami.Theme.textColor : customTextColor
 
   property var currentDate: new Date();
 

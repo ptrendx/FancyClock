@@ -5,18 +5,26 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name=""/>
 
-  <group name="General">
+  <group name="Appearance">
 	<entry name="fontSize" type="Int">
 		<default>33</default>
-		<label>font Size</label>
+		<label>Font Size</label>
 	</entry>
+  <entry name="textColorFromTheme" type="Bool">
+    <default>true</default>
+  </entry>
+  <entry name="textColor" type="Color">
+    <default>#FFFFFF</default>
+  </entry>
+  </group>
+  <group name="General">
     <entry name="dayInitial" type="Int">
 		<default>0</default>
-		<label>Day initial</label>
+		<label>First day of the week</label>
 	</entry>
-    <entry name="latinAlphabet" type="bool">
-      <default>true</default>
-      </entry>
+  <entry name="latinAlphabet" type="bool">
+    <default>true</default>
+  </entry>
   </group>
 
 </kcfg>
